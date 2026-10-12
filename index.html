@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Felipe Panta — Backend & Fullstack Developer</title>
-  <meta name="description" content="Backend and fullstack developer based in São Paulo. Building production systems — DeFi, automation, game mechanics.">
+  <meta name="description" content="Felipe Panta, backend and fullstack developer in São Paulo. Explore public projects in developer tooling, automation, local AI and monitoring.">
+  <link rel="canonical" href="https://pantalipe.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Felipe Panta — Backend &amp; Fullstack Developer">
+  <meta property="og:description" content="Public projects in developer tooling, automation, local AI and monitoring. Built with Python and web technologies.">
+  <meta property="og:url" content="https://pantalipe.github.io/">
+  <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -67,7 +73,10 @@
     }
     .nav-links a:hover { color: var(--text); }
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 88px 0; border-top: 1px solid var(--border); }
+    section { padding: 88px 0; border-top: 1px solid var(--border); scroll-margin-top: 80px; }
+    .skip-link { position: fixed; top: 8px; left: 8px; z-index: 200; padding: 12px; background: var(--accent); color: var(--bg); transform: translateY(-160%); }
+    .skip-link:focus { transform: translateY(0); }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
     .section-label {
       font-family: var(--mono);
       font-size: 12px;
@@ -184,6 +193,10 @@
       box-shadow: 0 14px 44px var(--accent-glow);
     }
     .project-icon { font-size: 26px; margin-bottom: 16px; }
+    .project-card.featured { grid-column: 1 / -1; border-color: var(--accent); }
+    .project-card:last-child { grid-column: 1 / -1; }
+    .project-label { font-family: var(--mono); color: var(--accent); font-size: 12px; margin-bottom: 12px; }
+    .project-cta { margin-top: 20px; font-size: 13px; color: var(--accent); }
     .project-name { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
     .project-desc { font-size: 14px; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 20px; }
     .tech-list { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -247,12 +260,14 @@
       .nav-links { gap: 18px; }
     }
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       .dot { animation: none; }
       .project-card, .btn-primary { transform: none !important; }
     }
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo">fp.dev</a>
@@ -264,9 +279,9 @@
     </div>
   </nav>
 
-  <div class="container">
+  <main id="main" class="container">
     <div class="hero">
-      <svg class="hero-graph" viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hero-graph" aria-hidden="true" focusable="false" viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
         <circle cx="260" cy="60"  r="4"   fill="#F0A500"/>
         <circle cx="390" cy="130" r="3"   fill="#F0A500"/>
         <circle cx="430" cy="240" r="3.5" fill="#F0A500"/>
@@ -292,12 +307,13 @@
         Available for backend &amp; fullstack roles · São Paulo, SP
       </div>
       <h1 class="hero-title">
-        I don't write code.<br>
-        <span class="accent">I build ecosystems.</span>
+        Felipe Panta.<br>
+        <span class="accent">Tools that connect.</span>
       </h1>
       <p class="hero-desc">
         Backend &amp; fullstack developer based in São Paulo.
-        Building production systems — DeFi platforms, automation pipelines, game mechanics — since 2009.
+        I build web applications and automation tools with Python and TypeScript,
+        connecting developer workflows, local AI and service monitoring.
       </p>
       <div class="hero-chips">
         <span class="chip">Python</span>
@@ -320,9 +336,13 @@
 
     <section id="about">
       <p class="section-label">About</p>
-      <h2 class="section-title">Builder, not just a coder.</h2>
+      <h2 class="section-title">From workflow to working tool.</h2>
       <p class="about-body">
-        I've been involved with <strong>Bitcoin since 2009</strong> — long before it was mainstream. That same instinct for building real infrastructure drove me to create <strong>PandaPoints</strong>, a full DeFi ecosystem live on BSC Mainnet, and a 17-project personal toolkit I call the <strong>panda ecosystem</strong>. Based in São Paulo and actively looking for backend or fullstack roles where I can ship things that matter.
+        I'm an independent developer based in <strong>São Paulo, Brazil</strong>.
+        I build the <strong>Panda ecosystem</strong>: related tools and applications for
+        managing repositories, scheduling content, integrating local LLMs and monitoring services.
+        My approach is <strong>local-first</strong>, with focused interfaces and reusable components.
+        Below is a selection of public repositories where you can explore the implementation.
       </p>
     </section>
 
@@ -331,52 +351,57 @@
       <h2 class="section-title">Selected work.</h2>
       <div class="projects-grid">
 
-        <a href="https://github.com/pantalipe" target="_blank" rel="noopener" class="project-card">
-          <div class="project-icon">🐼</div>
-          <div class="project-name">PandaPoints DApp</div>
-          <p class="project-desc">Full DeFi platform on BSC Mainnet. BEP-20 token, price chart with BNB/USD/BRL toggle, WalletConnect + Trust Wallet integration, on-chain analytics, and SQLite event tracking. Live in production.</p>
-          <div class="tech-list">
-            <span class="tech-tag">Next.js</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Solidity</span>
-            <span class="tech-tag">ethers.js v6</span>
-            <span class="tech-tag">BSC</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/pantalipe/pandapop" target="_blank" rel="noopener" class="project-card">
-          <div class="project-icon">🎮</div>
-          <div class="project-name">pandapop</div>
-          <p class="project-desc">Idle clicker game with bamboo currency, 6 upgrade tiers (Baby Panda → Panda Temple), a robust save/load system, and original sprites. Built from scratch in Godot 4.</p>
-          <div class="tech-list">
-            <span class="tech-tag">Godot 4.4</span>
-            <span class="tech-tag">GDScript</span>
-            <span class="tech-tag">Game Design</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/pantalipe" target="_blank" rel="noopener" class="project-card">
-          <div class="project-icon">🛠️</div>
-          <div class="project-name">panda-cli</div>
-          <p class="project-desc">Unified CLI orchestrating 17 interconnected projects — git operations, VPS health, LLM routing, content scheduling, benchmark runs, and a live monitor dashboard.</p>
+        <a href="https://github.com/pantalipe/gitmanager" target="_blank" rel="noopener" class="project-card featured">
+          <div class="project-label">Featured project · Public source</div>
+          <div class="project-icon" aria-hidden="true">🛠️</div>
+          <h3 class="project-name">gitmanager</h3>
+          <p class="project-desc">A local dashboard that brings multiple Git repositories into one interface. I built a Python HTTP backend and a plain HTML/JavaScript frontend for status, diffs, commit history, branches and project metadata, with optional local LLM suggestions for commit messages and READMEs.</p>
           <div class="tech-list">
             <span class="tech-tag">Python</span>
-            <span class="tech-tag">SQLite</span>
-            <span class="tech-tag">Linux</span>
-            <span class="tech-tag">SSH</span>
+            <span class="tech-tag">HTTP</span>
+            <span class="tech-tag">HTML / JavaScript</span>
+            <span class="tech-tag">Git</span>
           </div>
+          <span class="project-cta">Explore source &amp; setup →</span>
         </a>
 
-        <a href="https://github.com/pantalipe" target="_blank" rel="noopener" class="project-card">
-          <div class="project-icon">⚙️</div>
-          <div class="project-name">Personal Tooling</div>
-          <p class="project-desc">A growing collection of private automation tools for productivity and workflow — scrapers, document pipelines, local LLM integrations, and CLI utilities built for daily use.</p>
+        <a href="https://github.com/pantalipe/conduler" target="_blank" rel="noopener" class="project-card">
+          <div class="project-icon" aria-hidden="true">📡</div>
+          <h3 class="project-name">conduler</h3>
+          <p class="project-desc">A local video publishing scheduler with a web interface, OAuth flows, a timed job queue and platform-specific integrations for YouTube, Instagram and TikTok. Publishing requires platform credentials; Instagram needs a public video URL and TikTok requires app approval.</p>
+          <div class="tech-list">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">OAuth</span>
+            <span class="tech-tag">Web APIs</span>
+            <span class="tech-tag">Scheduling</span>
+          </div>
+          <span class="project-cta">Explore source &amp; setup →</span>
+        </a>
+
+        <a href="https://github.com/pantalipe/pandagent" target="_blank" rel="noopener" class="project-card">
+          <div class="project-icon" aria-hidden="true">🧠</div>
+          <h3 class="project-name">pandagent</h3>
+          <p class="project-desc">A reusable Python client for local LLM inference. Task-based model routing, output cleanup and shared generation methods let multiple tools use a consistent interface. Connects to a configurable OpenAI-compatible inference server.</p>
           <div class="tech-list">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">LLMs</span>
-            <span class="tech-tag">SQLite</span>
-            <span class="tech-tag">Automation</span>
+            <span class="tech-tag">HTTP client</span>
+            <span class="tech-tag">Packaging</span>
           </div>
+          <span class="project-cta">Explore source &amp; setup →</span>
+        </a>
+
+        <a href="https://github.com/pantalipe/panda-monitor" target="_blank" rel="noopener" class="project-card">
+          <div class="project-icon" aria-hidden="true">📊</div>
+          <h3 class="project-name">panda-monitor</h3>
+          <p class="project-desc">A lightweight health dashboard for local services and ecosystem workflows. A JSON health endpoint and server-sent events feed an automatically updating web interface, with configurable checks for service availability and operational signals.</p>
+          <div class="tech-list">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">JSON API</span>
+            <span class="tech-tag">SSE</span>
+            <span class="tech-tag">Monitoring</span>
+          </div>
+          <span class="project-cta">Explore source &amp; setup →</span>
         </a>
 
       </div>
@@ -450,7 +475,7 @@
       </div>
     </section>
 
-  </div>
+  </main>
 
   <footer>
     <div class="container">
